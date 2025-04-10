@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .section-scroll {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .section-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Initial Popup Modal -->
+    <div id="initialModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4">Quick Health Check</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Have you taken your tablets today?</label>
+                    <div class="flex space-x-4">
+                        <button onclick="answerTablet('yes')" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
+                        <button onclick="answerTablet('no')" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">No</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Had your recent checkup?</label>
+                    <div class="flex space-x-4">
+                        <button onclick="answerCheckup('yes')" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
+                        <button onclick="answerCheckup('no')" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-hospital text-blue-600 text-2xl"></i>
+                    <span class="ml-2 font-semibold text-xl">HMS</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-gray-600">Patient ID: <span id="patientId" class="font-medium">P12345</span></p>
+                        <p class="text-sm font-medium text-gray-800" id="patientName">John Doe</p>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="h-10 w-10 rounded-full">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Sections Navigation -->
+        <div class="section-scroll flex space-x-4 overflow-x-auto pb-4 mb-8">
+            <button onclick="showSection('nutrition')" class="flex-shrink-0 px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-utensils text-green-500 mr-2"></i>
+                Nutrition
+            </button>
+            <button onclick="showSection('fitness')" class="flex-shrink-0 px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-dumbbell text-blue-500 mr-2"></i>
+                Fitness
+            </button>
+            <button onclick="showSection('chatbot')" class="flex-shrink-0 px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-robot text-purple-500 mr-2"></i>
+                Chatbot
+            </button>
+            <button onclick="showSection('reminders')" class="flex-shrink-0 px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-bell text-red-500 mr-2"></i>
+                Reminders
+            </button>
+        </div>
+
+        <!-- Section Content -->
+        <div class="grid grid-cols-1 gap-6">
+            <!-- Nutrition Section -->
+            <div id="nutrition" class="section bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Nutrition Tracker</h2>
+                <div class="space-y-4">
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <p class="text-yellow-800 font-medium">💡 Tip: Take 5 minutes for each meal for better health!</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">What did you eat today?</label>
+                        <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="List your meals..."></textarea>
+                    </div>
+                    <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                        Save Meal Log
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fitness Section -->
+            <div id="fitness" class="section hidden bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Fitness Tracker</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Today's Exercise</label>
+                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="What exercise did you do?">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Steps Walked</label>
+                        <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="Number of steps">
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Log Activity
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chatbot Section -->
+            <div id="chatbot" class="section hidden bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Health Assistant</h2>
+                <div class="h-96 flex flex-col">
+                    <div class="flex-1 overflow-y-auto mb-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="chat-messages space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 rounded-lg p-3 max-w-xs">
+                                    <p class="text-sm">Hello! How can I help you today?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <input type="text" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="Type your message...">
+                        <button class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reminders Section -->
+            <div id="reminders" class="section hidden bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Health Reminders</h2>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-blue-800">Take Morning Medicine</p>
+                            <p class="text-sm text-blue-600">8:00 AM Daily</p>
+                        </div>
+                        <button class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-green-800">Evening Walk</p>
+                            <p class="text-sm text-green-600">6:00 PM Daily</p>
+                        </div>
+                        <button class="text-green-600 hover:text-green-800">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </button>
+                    </div>
+                    <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                        Add New Reminder
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Show initial modal on page load
+        window.onload = function() {
+            document.getElementById('initialModal').classList.remove('hidden');
+        };
+
+        // Handle tablet answer
+        function answerTablet(answer) {
+            // Handle the answer (you can add more functionality here)
+            if (answer === 'no') {
+                alert('Please take your prescribed medications!');
+            }
+        }
+
+        // Handle checkup answer
+        function answerCheckup(answer) {
+            // Handle the answer (you can add more functionality here)
+            if (answer === 'no') {
+                alert('Please schedule your checkup soon!');
+            }
+            document.getElementById('initialModal').classList.add('hidden');
+        }
+
+        // Show/hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

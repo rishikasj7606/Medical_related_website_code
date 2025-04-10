@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-blue-50 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 my-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <i class="fas fa-user-plus text-4xl text-blue-600"></i>
+            <h1 class="text-2xl font-bold text-gray-800 mt-4">Create Your Account</h1>
+            <p class="text-gray-500">Please fill in your information and medical history</p>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="space-y-6">
+            <!-- Personal Information Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+                        <input type="text" name="fullName" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter your full name">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                        <input type="email" name="email" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                        <input type="password" name="password" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Create password">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
+                        <input type="password" name="confirmPassword" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Confirm password">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical History Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Medical History</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Do you have any chronic diseases?</label>
+                        <textarea name="chronicDiseases" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            rows="2" placeholder="List any chronic conditions"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Current Medications</label>
+                        <textarea name="medications" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            rows="2" placeholder="List your current medications"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Allergies</label>
+                        <textarea name="allergies" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            rows="2" placeholder="List any allergies"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Survey Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Health Survey</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Do you take any tablets/medications regularly?</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="takesTablets" value="yes" class="mr-2">
+                                Yes
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="takesTablets" value="no" class="mr-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">When was your last checkup?</label>
+                        <input type="date" name="lastCheckup" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Exercise Frequency</label>
+                        <select name="exerciseFrequency" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select frequency</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">2-3 times a week</option>
+                            <option value="occasionally">Occasionally</option>
+                            <option value="never">Never</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex items-center justify-between">
+                <button type="submit" 
+                    class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-200">
+                    Create Account
+                </button>
+                <a href="index.html" class="text-blue-600 hover:text-blue-800">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

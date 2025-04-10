@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 space-y-6">
+        <!-- Logo and Title -->
+        <div class="text-center space-y-4">
+            <div class="flex justify-center items-center gap-3">
+                <div class="bg-blue-50 p-3 rounded-full">
+                    <i class="fas fa-hospital-user text-4xl text-blue-600"></i>
+                </div>
+                <div class="text-left">
+                    <h2 class="text-2xl font-bold text-gray-800">HMS</h2>
+                    <p class="text-sm text-gray-500">Healthcare Management System</p>
+                </div>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800 mt-4">Welcome Back</h1>
+                <p class="text-gray-500 mt-1">Login to access your dashboard</p>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="email">
+                    Email Address
+                </label>
+                <div class="relative">
+                    <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="email" id="email" name="email" required
+                        class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter your email">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="password">
+                    Password
+                </label>
+                <div class="relative">
+                    <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="password" id="password" name="password" required
+                        class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter your password">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input type="checkbox" id="remember" 
+                        class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                    <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+            </div>
+
+            <button type="submit" 
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center justify-center gap-2">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Sign In</span>
+            </button>
+        </form>
+
+        <!-- Signup Link -->
+        <div class="text-center text-sm">
+            <span class="text-gray-600">Don't have an account?</span>
+            <a href="signup.html" class="text-blue-600 hover:text-blue-800 font-medium ml-1">Sign up</a>
+        </div>
+
+        <!-- Features Preview -->
+        <div class="border-t pt-6 mt-6">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <i class="fas fa-heartbeat text-red-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600">Health Tracking</p>
+                </div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <i class="fas fa-pills text-green-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600">Medicine Reminders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
